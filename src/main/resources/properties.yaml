@@ -1,0 +1,5 @@
+system:
+  one:
+    url: "http://poc-it-system-api-one.us-e1.cloudhub.io/accounts"
+  two:
+    url: "http://poc-it-system-api-two.us-e1.cloudhub.io/accounts"

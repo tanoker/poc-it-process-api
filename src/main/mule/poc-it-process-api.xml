@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<configuration-properties doc:name="Configuration properties" doc:id="3c58d5ca-5123-461c-9060-29133bce0936" file="properties.yaml" />
+	<flow name="poc-it-process-apiFlow" doc:id="5c3fcff6-7390-4e4e-aa4d-a1f326c9251c" >
+		<scheduler doc:name="Scheduler" doc:id="805b8f60-2cb7-4223-b1ed-75f83c26b8f8" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="10000" startDelay="5000"/>
+			</scheduling-strategy>
+		</scheduler>
+		<http:request method="GET" doc:name="Request" doc:id="695ded81-5658-4ead-860e-37b4adf783bf" url="${system.one.url}"/>
+		<logger level="INFO" doc:name="Logger" doc:id="1f04ef9d-fc4a-471b-8677-3362944c2b98" message="#[payload]"/>
+		<http:request method="POST" doc:name="Request" doc:id="46a9752f-e82e-4c9d-8975-fd0bc15c3beb" url="${system.two.url}"/>
+		<logger level="INFO" doc:name="Logger" doc:id="9e0cc67b-862d-4479-95a3-a243153a8839" message="#[payload]"/>
+	</flow>
+</mule>
